@@ -2,27 +2,20 @@ package utils
 
 import (
 	"io"
-	"log"
 	"net/http"
-	"regexp"
-	"strings"
 )
 
-func GetProxyImage(url string, referer string, authority string) []byte {
+func FetchImage(url string, referer string, authority string) ([]byte, error) {
+	var bodyText []byte
+
 	client := &http.Client{}
 	req, err := http.NewRequest(http.MethodGet, url, nil)
 	if err != nil {
-		log.Fatal(err.Error())
-	}
-
-	if err != nil {
-		log.Print("missmath authority", err.Error())
+		return bodyText, err
 	}
 
 	if authority == "" {
-		r := regexp.MustCompile(`/.+?/`)
-		matcherAuthority := r.FindStringSubmatch(url)
-		authority = strings.Replace(matcherAuthority[0], "/", "", -1)
+		authority = GetAuthorityFromUrl(url)
 	}
 
 	req.Header.Set("authority", authority)
@@ -39,15 +32,15 @@ func GetProxyImage(url string, referer string, authority string) []byte {
 
 	resp, err := client.Do(req)
 	if err != nil {
-		log.Print(err.Error())
+		return bodyText, err
 	}
 
 	defer resp.Body.Close()
 
-	bodyText, err := io.ReadAll(resp.Body)
+	bodyText, err = io.ReadAll(resp.Body)
 	if err != nil {
-		log.Print(err.Error())
+		return bodyText, err
 	}
 
-	return bodyText
+	return bodyText, nil
 }
