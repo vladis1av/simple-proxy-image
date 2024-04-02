@@ -2,7 +2,7 @@ package env
 
 import (
 	"os"
-	"simple-proxy-images/internal/config"
+	"simple-proxy-image/internal/config"
 
 	"github.com/pkg/errors"
 )

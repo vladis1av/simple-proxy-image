@@ -3,9 +3,9 @@ package main
 import (
 	"flag"
 	"log"
-	"simple-proxy-images/internal/app"
-	"simple-proxy-images/internal/config"
-	"simple-proxy-images/internal/config/env"
+	"simple-proxy-image/internal/app"
+	"simple-proxy-image/internal/config"
+	"simple-proxy-image/internal/config/env"
 )
 
 var configPath string

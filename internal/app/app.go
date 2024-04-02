@@ -3,7 +3,7 @@ package app
 import (
 	"log"
 	"net/http"
-	"simple-proxy-images/internal/controller/http/v1/proxyImage"
+	"simple-proxy-image/internal/controller/http/v1/proxyImage"
 
 	"github.com/gorilla/mux"
 )

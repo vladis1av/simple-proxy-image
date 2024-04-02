@@ -1,4 +1,4 @@
-module simple-proxy-images
+module simple-proxy-image
 
 go 1.21.5
 

@@ -3,7 +3,7 @@ package proxyImage
 import (
 	"log"
 	"net/http"
-	"simple-proxy-images/internal/utils"
+	"simple-proxy-image/internal/utils"
 
 	"github.com/gorilla/mux"
 )
